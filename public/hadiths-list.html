@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hadiths List - Ramadan Tracker</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/hadiths.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self' https://api.aladhan.com https://api.alquran.cloud https://api.bigdatacloud.net https://cdn.jsdelivr.net;">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="./assets/logo.svg" alt="Ramadan Tracker Logo">
+        
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#prayer-times">Prayer Times</a>
+            <a href="index.html#calendar">Calendar</a>
+            <a href="quran.html">Quran</a>
+            <a href="hadiths.html" class="active">Hadiths</a>
+            <a href="index.html#qibla">Qibla</a>
+        </div>
+    </nav>
+
+    <!-- Hadiths List Section -->
+    <section class="hadiths-list-section">
+        <div class="hadiths-header">
+            <a href="hadiths.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Collections
+            </a>
+            <h1 id="collectionTitle">Loading...</h1>
+        </div>
+        <div class="hadiths-container">
+            <div class="hadiths-search">
+                <input type="text" id="hadithSearch" placeholder="Search hadiths...">
+                <div class="pagination-controls">
+                    <button id="prevPage" class="btn-page">
+                        <i class="fas fa-chevron-left"></i> Previous
+                    </button>
+                    <span id="pageInfo">Page 1</span>
+                    <button id="nextPage" class="btn-page">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="hadithsList" class="hadiths-list"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Ramadan Tracker helps you make the most of this blessed month.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="quran.html">Quran</a></li>
+                    <li><a href="hadiths.html">Hadiths</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Ramadan Tracker. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/hadiths-list.js"></script>
+</body>
+</html> 

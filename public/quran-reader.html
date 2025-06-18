@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quran Reader - Ramadan Tracker</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/quran.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.aladhan.com https://api.alquran.cloud https://api.bigdatacloud.net;">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <style>
+        .ayah-row { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
+        .ayah-arabic { font-size: 24px; direction: rtl; text-align: right; flex: 1; }
+        .ayah-translation { font-size: 16px; color: #444; margin-top: 8px; display: none; }
+        .ayah-controls { min-width: 40px; }
+        .ayah-controls button { background: none; border: none; cursor: pointer; font-size: 20px; color: #16C47F; }
+        .ayah-controls button:active { color: #13a76c; }
+        .toggle-translation { margin: 20px 0; background: #16C47F; color: #fff; border: none; border-radius: 6px; padding: 8px 20px; font-size: 16px; cursor: pointer; }
+        .toggle-translation.active { background: #13a76c; }
+        .surah-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+        .surah-nav button { background: #f0f0f0; border: none; border-radius: 6px; padding: 8px 16px; font-size: 16px; cursor: pointer; }
+        .surah-nav button:active { background: #e0e0e0; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="./assets/logo.svg" alt="Ramadan Tracker Logo">
+           
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="quran.html">Quran</a>
+        </div>
+        <button class="open-quran-btn" onclick="window.location.href='quran.html'" style="margin-left:auto;">Back to Quran List</button>
+    </nav>
+    <main>
+        <section class="quran">
+            <div class="quran-container">
+                <div class="surah-header-card" id="surahHeaderCard">
+                    <div class="surah-header-content">
+                        <div class="surah-header-title">
+                            <h2 id="surahTitle">Surah</h2>
+                        </div>
+                        <div class="surah-header-meta" id="surahMeta"></div>
+                    </div>
+                </div>
+                <div id="ayahList"></div>
+            </div>
+        </section>
+    </main>
+    <div class="sticky-bottom-bar">
+        <button id="prevSurah" class="nav-btn"><i class="fas fa-arrow-left"></i> Prev</button>
+        <button class="toggle-translation" id="toggleTranslation"><i class="fas fa-language"></i> <span>Show Translation</span></button>
+        <button id="nextSurah" class="nav-btn">Next <i class="fas fa-arrow-right"></i></button>
+    </div>
+    <script src="js/quran-reader.js"></script>
+</body>
+</html> 

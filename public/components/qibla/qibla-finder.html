@@ -1,0 +1,30 @@
+<!-- Qibla Finder Component -->
+<div class="qibla-finder">
+    <h2>Qibla Direction</h2>
+    <div class="qibla-container">
+        <div class="compass">
+            <div class="compass-ring">
+                <div class="compass-needle"></div>
+                <div class="compass-marker qibla-marker">
+                    <i class="fas fa-mosque"></i>
+                </div>
+            </div>
+            <div class="compass-direction">
+                <span id="direction">--</span>
+            </div>
+        </div>
+        <div class="qibla-info">
+            <div class="info-item">
+                <i class="fas fa-location-dot"></i>
+                <span id="currentLocation">Getting location...</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-compass"></i>
+                <span id="qiblaDistance">Calculating...</span>
+            </div>
+        </div>
+        <button id="refreshQibla" class="btn-primary">
+            <i class="fas fa-sync-alt"></i> Refresh
+        </button>
+    </div>
+</div> 

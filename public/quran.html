@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Quran - Ramadan Tracker</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/quran.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.aladhan.com https://api.alquran.cloud https://api.bigdatacloud.net;">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="./assets/logo.svg" alt="Ramadan Tracker Logo">
+          
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#quran" class="active">Quran</a>
+        </div>
+        <button class="open-quran-btn" onclick="window.location.href='index.html'" style="margin-left:auto;">Back to Home</button>
+    </nav>
+    <main>
+        <section id="quran" class="quran">
+            <h2>Quran Reading Tracker</h2>
+            <div class="quran-container">
+                <div class="quran-search">
+                    <input type="text" id="quranSearch" placeholder="Search Surah or verse...">
+                    <select id="quranEdition">
+                        <option value="quran-uthmani">Uthmani</option>
+                        <option value="quran-simple">Simple</option>
+                        <option value="quran-simple-clean">Simple Clean</option>
+                    </select>
+                </div>
+                <div class="quran-progress">
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 0%"></div>
+                    </div>
+                    <p>0% Complete</p>
+                </div>
+                <div class="surah-list" id="surahList"></div>
+                <div class="quran-reader" id="quranReader"></div>
+            </div>
+        </section>
+    </main>
+    <script src="js/quran.js"></script>
+</body>
+</html> 

@@ -1,0 +1,153 @@
+/* Premium Features Styling */
+
+.premium-feature {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.premium-locked {
+    filter: blur(2px);
+    pointer-events: none;
+}
+
+.premium-locked::after {
+    content: '🔒 Premium Feature';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    z-index: 1000;
+}
+
+.premium-unlocked {
+    filter: none;
+    pointer-events: auto;
+}
+
+/* Qibla Direction Styling */
+/* REMOVED: .qibla-direction styling as requested by user
+.qibla-direction {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+*/
+
+.qibla-compass {
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+    background: url('../images/compass.png') no-repeat center;
+    background-size: contain;
+    position: relative;
+}
+
+.qibla-compass::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background: red;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Advanced Calculations Styling */
+.advanced-calculations {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.calculation-methods select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+/* Premium Upgrade Button */
+.upgrade-button {
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upgrade-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Premium Feature Badge */
+.premium-badge {
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+/* Premium Feature Tooltip */
+.premium-tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.premium-tooltip .tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.premium-tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Premium Feature Animation */
+@keyframes premiumPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+    }
+}
+
+.premium-feature.premium-unlocked {
+    animation: premiumPulse 2s infinite;
+} 

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan Tracker</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/qibla.css">
+    <link rel="stylesheet" href="css/quran.css">
+    <link rel="stylesheet" href="css/hadiths.css">
+    <link rel="stylesheet" href="css/calendar.css">
+    <link rel="stylesheet" href="css/premium-features.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com https://fonts.gstatic.com https://www.gstatic.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self' https://api.aladhan.com https://api.alquran.cloud https://api.bigdatacloud.net https://cdn.jsdelivr.net https://firebase.googleapis.com;">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="./assets/logo.svg" alt="Ramadan Tracker Logo">
+           
+        </div>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Open navigation menu" aria-controls="mobileNav" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <div class="nav-links">
+            <a href="#home" class="active">Home</a>
+            <a href="#prayer-times">Prayer Times</a>
+            <a href="#calendar">Calendar</a>
+            <a href="#quran">Quran</a>
+            <a href="#hadiths">Hadiths</a>
+            <a href="#qibla">Qibla</a>
+            <!-- <a href="#" id="premium-button" class="upgrade-button">Upgrade to Premium</a> -->
+        </div>
+        <div class="auth-buttons">
+            <button class="btn-login" id="loginBtn">Login</button>
+            <button class="btn-register" id="registerBtn">Register</button>
+            <button class="btn-profile" id="profileBtn" style="display: none;" onclick="window.location.href='profile.html'">
+                <i class="fas fa-user"></i>
+                <span id="userName"></span>
+            </button>
+            <button class="btn-logout" id="logoutBtn" style="display: none;">Logout</button>
+        </div>
+        <button class="theme-toggle">
+            <i class="fas fa-moon"></i>
+        </button>
+    </nav>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+        <div class="mobile-nav-content">
+            <button class="close-mobile-nav" id="closeMobileNav" aria-label="Close navigation menu">&times;</button>
+            <a href="#home">Home</a>
+            <a href="#prayer-times">Prayer Times</a>
+            <a href="#calendar">Calendar</a>
+            <a href="#quran">Quran</a>
+            <a href="#hadiths">Hadiths</a>
+            <a href="#qibla">Qibla</a>
+            <!-- <a href="#" id="premium-button-mobile" class="upgrade-button">Upgrade to Premium</a> -->
+            <div class="mobile-auth-buttons">
+                <button class="btn-login" id="loginBtnMobile">Login</button>
+                <button class="btn-register" id="registerBtnMobile">Register</button>
+                <button class="btn-profile" id="profileBtnMobile" style="display: none;" onclick="window.location.href='profile.html'">
+                    <i class="fas fa-user"></i>
+                    <span id="userNameMobile"></span>
+                </button>
+                <button class="btn-logout" id="logoutBtnMobile" style="display: none;">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="authContent"></div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Ramadan Tracker</h1>
+            <p>Track your prayers, tasks, and Quran reading during this blessed month</p>
+            <div class="countdown">
+                <h2>Ramadan Countdown</h2>
+                <div id="countdown-timer">
+                    <div class="time-block">
+                        <span id="days">00</span>
+                        <span class="label">Days</span>
+                    </div>
+                    <div class="time-block">
+                        <span id="hours">00</span>
+                        <span class="label">Hours</span>
+                    </div>
+                    <div class="time-block">
+                        <span id="minutes">00</span>
+                        <span class="label">Minutes</span>
+                    </div>
+                    <div class="time-block">
+                        <span id="seconds">00</span>
+                        <span class="label">Seconds</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prayer Times Section -->
+    <section id="prayer-times" class="prayer-times">
+        <h2>Prayer Times <!-- <span class="premium-badge">Premium</span> --></h2>
+        <div class="prayer-cards">
+            <div class="prayer-card">
+                <i class="fas fa-sun"></i>
+                <h3>Fajr</h3>
+                <div class="time">--:--</div>
+            </div>
+            <div class="prayer-card">
+                <i class="fas fa-sun"></i>
+                <h3>Dhuhr</h3>
+                <div class="time">--:--</div>
+            </div>
+            <div class="prayer-card">
+                <i class="fas fa-sun"></i>
+                <h3>Asr</h3>
+                <div class="time">--:--</div>
+            </div>
+            <div class="prayer-card">
+                <i class="fas fa-moon"></i>
+                <h3>Maghrib</h3>
+                <div class="time">--:--</div>
+            </div>
+            <div class="prayer-card">
+                <i class="fas fa-moon"></i>
+                <h3>Isha</h3>
+                <div class="time">--:--</div>
+            </div>
+        </div>
+
+        <!-- Advanced Calculations (Premium) -->
+        <!-- <div class="advanced-calculations">
+            <h3>Advanced Calculations </h3>
+            <div class="calculation-methods">
+                <select id="calculation-method">
+                    <option value="2">ISNA</option>
+                    <option value="3">Muslim World League</option>
+                    <option value="4">Umm Al-Qura University</option>
+                    <option value="5">Egyptian General Authority</option>
+                </select>
+            </div>
+        </div> -->
+
+        <!-- Push Notifications (Premium) -->
+        <div class="notifications">
+            <h3>Prayer Time Notifications </h3>
+            <button id="enable-notifications" class="upgrade-button">Enable Notifications</button>
+            <button id="test-notification" class="btn-primary">Test Notification</button>
+        </div>
+    </section>
+
+
+    <!-- Calendar Section -->
+    <section id="calendar" class="calendar">
+        <h2>Hijri Calendar</h2>
+        <div class="calendar-container"></div>
+    </section>
+
+    <!-- Quran Section -->
+    <section id="quran" class="quran home-quran-section">
+        <div class="quran-card">
+            <div class="quran-card-left">
+                <div class="quran-icon-circle">
+                    <i class="fas fa-quran"></i>
+                </div>
+            </div>
+            <div class="quran-card-right">
+                <h2>Quran Reading Tracker</h2>
+                <blockquote class="quran-quote">“The best among you are those who learn the Quran and teach it.” <span>– Prophet Muhammad (ﷺ)</span></blockquote>
+                <div class="quran-progress-bar">
+                    <div class="quran-progress-inner" style="width: 0%"></div>
+                </div>
+                <p class="quran-progress-text">Start your journey today!</p>
+                <button id="openQuranBtn" class="open-quran-btn">Read Quran</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hadiths Section -->
+    <section id="hadiths" class="hadiths home-hadiths-section">
+        <div class="hadiths-card">
+            <div class="hadiths-card-left">
+                <div class="hadiths-icon-circle">
+                    <i class="fas fa-book-open"></i>
+                </div>
+            </div>
+            <div class="hadiths-card-right">
+                <h2>Hadiths Collection</h2>
+                <blockquote class="hadiths-quote">“Whoever travels a path in search of knowledge, Allah will make easy for him a path to Paradise.” <span>– Prophet Muhammad (ﷺ)</span></blockquote>
+                <p class="hadiths-desc">Explore the authentic collections of hadiths from the Prophet Muhammad (peace be upon him).</p>
+                <a href="hadiths.html" class="btn-primary hadiths-btn"><i class="fas fa-book-open"></i> Browse Hadiths</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Qibla Section -->
+    <section id="qibla" class="qibla">
+        <h2>Qibla Direction</h2>
+        <div class="qibla-container">
+            <div id="qiblaContent"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Ramadan Tracker helps you make the most of this blessed month.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#prayer-times">Prayer Times</a></li>
+                    <li><a href="#calendar">Calendar</a></li>
+                    <li><a href="#quran">Quran</a></li>
+                    <li><a href="#hadiths">Hadiths</a></li>
+                    <li><a href="#qibla">Qibla</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Ramadan Tracker. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+        import { getAuth } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        
+        // Import auth service
+        import authService from './js/auth.js';
+        
+        // Initialize auth service
+        document.addEventListener('DOMContentLoaded', () => {
+            authService.initialize();
+        });
+    </script>
+    <!-- Prayer Times Script -->
+    <script type="module" src="js/prayer-times.js"></script>
+
+    <!-- Calendar Script -->
+    <script type="module" src="js/calendar.js"></script>
+    
+    <!-- Qibla Script -->
+    <script type="module" src="js/qibla.js"></script>
+
+    <!-- Quran Script -->
+    <script src="js/quran.js"></script>
+    <script>
+    document.getElementById('openQuranBtn').onclick = function() {
+        window.location.href = 'quran.html';
+    };
+    </script>
+
+    <!-- Navbar Responsive Script -->
+    <script>
+    // Hamburger and mobile nav toggle
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const closeMobileNav = document.getElementById('closeMobileNav');
+    hamburgerBtn.addEventListener('click', () => {
+        mobileNav.classList.add('active');
+        mobileNav.setAttribute('aria-hidden', 'false');
+        hamburgerBtn.setAttribute('aria-expanded', 'true');
+    });
+    closeMobileNav.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+    });
+    // Optional: Close mobile nav when clicking a link
+    document.querySelectorAll('.mobile-nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            mobileNav.setAttribute('aria-hidden', 'true');
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+        });
+    });
+    </script>
+    <!-- Main JS for Countdown and Core Features -->
+    <script src="js/main.js"></script>
+    <script>
+        document.getElementById('test-notification').addEventListener('click', () => {
+            if (!('Notification' in window)) {
+                alert('This browser does not support desktop notification');
+                return;
+            }
+            Notification.requestPermission().then(permission => {
+                if (permission === 'granted') {
+                    new Notification('Test Notification', {
+                        body: 'This is a test notification from Ramadan Tracker!',
+                        icon: 'assets/logo.svg'
+                    });
+                } else if (permission === 'denied') {
+                    alert('Notification permission denied. Please enable it in your browser settings.');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Ramadan Tracker</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.aladhan.com https://api.alquran.cloud https://api.bigdatacloud.net;">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="./assets/logo.svg" alt="Ramadan Tracker Logo">
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#prayer-times">Prayer Times</a>
+            <a href="index.html#calendar">Calendar</a>
+            <a href="quran.html">Quran</a>
+            <a href="hadiths.html">Hadiths</a>
+            <a href="index.html#qibla">Qibla</a>
+        </div>
+    </nav>
+    <!-- Profile Section -->
+    <!-- Profile Component HTML from components/profile/profile.html -->
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <img id="profileImage" src="assets/default-avatar.png" alt="Profile Picture">
+                <div class="avatar-overlay">
+                    <label for="avatarUpload" class="upload-btn">
+                        <i class="fas fa-camera"></i>
+                    </label>
+                    <input type="file" id="avatarUpload" accept="image/*" hidden>
+                </div>
+            </div>
+            <h2 id="userDisplayName">Loading...</h2>
+            <p id="userEmail">Loading...</p>
+            <div class="profile-completion">
+                <div class="completion-bar">
+                    <div class="completion-progress" id="completionProgress"></div>
+                </div>
+                <span id="completionText">Complete your profile</span>
+            </div>
+        </div>
+        <div class="profile-content">
+            <div class="profile-main">
+                <form id="profileForm" class="profile-form">
+                    <div class="form-group">
+                        <label for="displayName">Full Name</label>
+                        <input type="text" id="displayName" name="displayName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" name="location">
+                    </div>
+                    <div class="form-group">
+                        <label for="bio">Bio</label>
+                        <textarea id="bio" name="bio" rows="3" placeholder="Tell us about yourself..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Save Changes</button>
+                    </div>
+                </form>
+                <div class="social-links">
+                    <h3>Social Media</h3>
+                    <div class="social-grid">
+                        <div class="social-item">
+                            <i class="fab fa-facebook"></i>
+                            <input type="url" id="facebook" placeholder="Facebook URL">
+                        </div>
+                        <div class="social-item">
+                            <i class="fab fa-twitter"></i>
+                            <input type="url" id="twitter" placeholder="Twitter URL">
+                        </div>
+                        <div class="social-item">
+                            <i class="fab fa-instagram"></i>
+                            <input type="url" id="instagram" placeholder="Instagram URL">
+                        </div>
+                        <div class="social-item">
+                            <i class="fab fa-linkedin"></i>
+                            <input type="url" id="linkedin" placeholder="LinkedIn URL">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-sidebar">
+                <div class="profile-settings">
+                    <h3>Account Settings</h3>
+                    <div class="settings-group">
+                        <button id="changePasswordBtn" class="btn-secondary">
+                            <i class="fas fa-key"></i> Change Password
+                        </button>
+                        <button id="deleteAccountBtn" class="btn-danger">
+                            <i class="fas fa-trash"></i> Delete Account
+                        </button>
+                    </div>
+                </div>
+                <div class="activity-history">
+                    <h3>Recent Activity</h3>
+                    <div class="activity-list" id="activityList">
+                        <!-- Activity items will be dynamically added here -->
+                    </div>
+                </div>
+                <div class="preferences">
+                    <h3>Preferences</h3>
+                    <div class="preference-item">
+                        <label class="switch">
+                            <input type="checkbox" id="emailNotifications">
+                            <span class="slider"></span>
+                        </label>
+                        <span>Email Notifications</span>
+                    </div>
+                    <div class="preference-item">
+                        <label class="switch">
+                            <input type="checkbox" id="darkMode">
+                            <span class="slider"></span>
+                        </label>
+                        <span>Dark Mode</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Change Password Modal -->
+    <div class="modal" id="changePasswordModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Change Password</h3>
+            <form id="changePasswordForm">
+                <div class="form-group">
+                    <label for="currentPassword">Current Password</label>
+                    <input type="password" id="currentPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" id="newPassword" required>
+                    <div class="password-strength" id="passwordStrength">
+                        <div class="strength-bar"></div>
+                        <span class="strength-text">Password strength</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmNewPassword">Confirm New Password</label>
+                    <input type="password" id="confirmNewPassword" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Update Password</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Delete Account Modal -->
+    <div class="modal" id="deleteAccountModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Delete Account</h3>
+            <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+            <form id="deleteAccountForm">
+                <div class="form-group">
+                    <label for="deletePassword">Enter your password to confirm</label>
+                    <input type="password" id="deletePassword" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-danger">Delete Account</button>
+                    <button type="button" class="btn-secondary cancel-delete">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Ramadan Tracker helps you make the most of this blessed month.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="quran.html">Quran</a></li>
+                    <li><a href="hadiths.html">Hadiths</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Ramadan Tracker. All rights reserved.</p>
+        </div>
+    </footer>
+    <script type="module" src="js/auth.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html> 

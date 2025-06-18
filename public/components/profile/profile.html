@@ -1,0 +1,161 @@
+<!-- Profile Component -->
+<div class="profile-container">
+    <div class="profile-header">
+        <div class="profile-avatar">
+            <img id="profileImage" src="assets/default-avatar.png" alt="Profile Picture">
+            <div class="avatar-overlay">
+                <label for="avatarUpload" class="upload-btn">
+                    <i class="fas fa-camera"></i>
+                </label>
+                <input type="file" id="avatarUpload" accept="image/*" hidden>
+            </div>
+        </div>
+        <h2 id="userDisplayName">Loading...</h2>
+        <p id="userEmail">Loading...</p>
+        <div class="profile-completion">
+            <div class="completion-bar">
+                <div class="completion-progress" id="completionProgress"></div>
+            </div>
+            <span id="completionText">Complete your profile</span>
+        </div>
+    </div>
+
+    <div class="profile-content">
+        <div class="profile-main">
+            <form id="profileForm" class="profile-form">
+                <div class="form-group">
+                    <label for="displayName">Full Name</label>
+                    <input type="text" id="displayName" name="displayName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required disabled>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location">
+                </div>
+                <div class="form-group">
+                    <label for="bio">Bio</label>
+                    <textarea id="bio" name="bio" rows="3" placeholder="Tell us about yourself..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                </div>
+            </form>
+
+            <div class="social-links">
+                <h3>Social Media</h3>
+                <div class="social-grid">
+                    <div class="social-item">
+                        <i class="fab fa-facebook"></i>
+                        <input type="url" id="facebook" placeholder="Facebook URL">
+                    </div>
+                    <div class="social-item">
+                        <i class="fab fa-twitter"></i>
+                        <input type="url" id="twitter" placeholder="Twitter URL">
+                    </div>
+                    <div class="social-item">
+                        <i class="fab fa-instagram"></i>
+                        <input type="url" id="instagram" placeholder="Instagram URL">
+                    </div>
+                    <div class="social-item">
+                        <i class="fab fa-linkedin"></i>
+                        <input type="url" id="linkedin" placeholder="LinkedIn URL">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-sidebar">
+            <div class="profile-settings">
+                <h3>Account Settings</h3>
+                <div class="settings-group">
+                    <button id="changePasswordBtn" class="btn-secondary">
+                        <i class="fas fa-key"></i> Change Password
+                    </button>
+                    <button id="deleteAccountBtn" class="btn-danger">
+                        <i class="fas fa-trash"></i> Delete Account
+                    </button>
+                </div>
+            </div>
+
+            <div class="activity-history">
+                <h3>Recent Activity</h3>
+                <div class="activity-list" id="activityList">
+                    <!-- Activity items will be dynamically added here -->
+                </div>
+            </div>
+
+            <div class="preferences">
+                <h3>Preferences</h3>
+                <div class="preference-item">
+                    <label class="switch">
+                        <input type="checkbox" id="emailNotifications">
+                        <span class="slider"></span>
+                    </label>
+                    <span>Email Notifications</span>
+                </div>
+                <div class="preference-item">
+                    <label class="switch">
+                        <input type="checkbox" id="darkMode">
+                        <span class="slider"></span>
+                    </label>
+                    <span>Dark Mode</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Change Password Modal -->
+<div class="modal" id="changePasswordModal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>Change Password</h3>
+        <form id="changePasswordForm">
+            <div class="form-group">
+                <label for="currentPassword">Current Password</label>
+                <input type="password" id="currentPassword" required>
+            </div>
+            <div class="form-group">
+                <label for="newPassword">New Password</label>
+                <input type="password" id="newPassword" required>
+                <div class="password-strength" id="passwordStrength">
+                    <div class="strength-bar"></div>
+                    <span class="strength-text">Password strength</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="confirmNewPassword">Confirm New Password</label>
+                <input type="password" id="confirmNewPassword" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Update Password</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Delete Account Modal -->
+<div class="modal" id="deleteAccountModal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>Delete Account</h3>
+        <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+        <form id="deleteAccountForm">
+            <div class="form-group">
+                <label for="deletePassword">Enter your password to confirm</label>
+                <input type="password" id="deletePassword" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-danger">Delete Account</button>
+                <button type="button" class="btn-secondary cancel-delete">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div> 

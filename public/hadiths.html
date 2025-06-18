@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hadiths - Ramadan Tracker</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/hadiths.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.aladhan.com https://api.alquran.cloud https://api.bigdatacloud.net;">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="./assets/logo.svg" alt="Ramadan Tracker Logo">
+         
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#prayer-times">Prayer Times</a>
+            <a href="index.html#calendar">Calendar</a>
+            <a href="quran.html">Quran</a>
+            <a href="hadiths.html" class="active">Hadiths</a>
+            <a href="index.html#qibla">Qibla</a>
+        </div>
+    </nav>
+
+    <!-- Hadiths Collections Section -->
+    <section class="hadiths-collections">
+        <h1>Hadith Collections</h1>
+        <div class="collections-grid">
+            <a href="hadiths-list.html?collection=bukhari" class="collection-card">
+                <div class="collection-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h2>Sahih Bukhari</h2>
+                <p>The most authentic collection of hadiths compiled by Imam Bukhari</p>
+            </a>
+            <a href="hadiths-list.html?collection=muslim" class="collection-card">
+                <div class="collection-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h2>Sahih Muslim</h2>
+                <p>The second most authentic collection compiled by Imam Muslim</p>
+            </a>
+            <a href="hadiths-list.html?collection=abudawud" class="collection-card">
+                <div class="collection-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h2>Abu Dawud</h2>
+                <p>Collection focusing on legal hadiths compiled by Abu Dawud</p>
+            </a>
+            <a href="hadiths-list.html?collection=tirmidhi" class="collection-card">
+                <div class="collection-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h2>Tirmidhi</h2>
+                <p>Collection known for its commentary and authentication by Imam Tirmidhi</p>
+            </a>
+            <a href="hadiths-list.html?collection=nasai" class="collection-card">
+                <div class="collection-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h2>Nasai</h2>
+                <p>Collection focusing on legal hadiths compiled by Imam Nasai</p>
+            </a>
+            <a href="hadiths-list.html?collection=ibnmajah" class="collection-card">
+                <div class="collection-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h2>Ibn Majah</h2>
+                <p>Collection containing many unique hadiths compiled by Ibn Majah</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Ramadan Tracker helps you make the most of this blessed month.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="quran.html">Quran</a></li>
+                    <li><a href="hadiths.html">Hadiths</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Ramadan Tracker. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <style>
+        .hadiths-collections {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .hadiths-collections h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .collection-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .collection-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .collection-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .collection-card h2 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .collection-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .collections-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html> 
