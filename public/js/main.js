@@ -203,4 +203,31 @@ document.querySelectorAll('.prayer-card, .calendar-container, .quran-progress').
 if (location.protocol === 'http:') {
   location.replace('https://' + location.hostname + location.pathname + location.search + location.hash);
 }
-*/ 
+*/
+
+// Payment Initiation Function
+async function initiatePayment(amount) {
+    // If using Firebase Auth, get the ID token for authentication
+    let idToken = null;
+    if (window.firebase && firebase.auth) {
+        const user = firebase.auth().currentUser;
+        if (user) {
+            idToken = await user.getIdToken();
+        }
+    }
+
+    const response = await fetch('http://localhost/payment-backend/public/initiate_payment.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            ...(idToken ? { 'Authorization': 'Bearer ' + idToken } : {})
+        },
+        body: JSON.stringify({ amount })
+    });
+    const data = await response.json();
+    if (data.GatewayPageURL) {
+        window.location.href = data.GatewayPageURL;
+    } else {
+        alert('Failed to initiate payment.');
+    }
+} 
